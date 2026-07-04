@@ -23,7 +23,8 @@ class SeedDemoDataCommand extends Command
      * @var array<int, string>
      */
     private const COMMAND_SEQUENCE = [
-        'kommandhub:add-demo-categories',
+        'kommandhub:add-main-categories',
+        'kommandhub:add-footer-categories',
         'kommandhub:add-property-groups',
         'kommandhub:add-demo-products',
     ];

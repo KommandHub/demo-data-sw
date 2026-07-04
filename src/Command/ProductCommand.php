@@ -49,7 +49,7 @@ class ProductCommand extends Command
         $categories = $this->productDataProvider->fetchTargetCategories($context);
 
         if ($categories === []) {
-            $io->error('No target categories found. Run kommandhub:add-demo-categories first.');
+            $io->error('No target categories found. Run kommandhub:add-main-categories first.');
 
             return Command::FAILURE;
         }

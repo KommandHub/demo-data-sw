@@ -34,10 +34,10 @@ use Kommandhub\DemoDataSW\Service\EntityChoiceSelector;
  * and health & wellness.
  *
  * Usage:
- *   php bin/console kommandhub:add-demo-categories
+ *   php bin/console kommandhub:add-main-categories
  */
-#[AsCommand('kommandhub:add-demo-categories', 'Kommandhub Category Command')]
-class CategoryCommand extends Command
+#[AsCommand('kommandhub:add-main-categories', 'Kommandhub Main Category Command')]
+class MainCategoryCommand extends Command
 {
     /**
      * Default category status constants.

@@ -16,7 +16,6 @@ abstract class ReflectionTestCase extends TestCase
     {
         $reflection = new ReflectionClass($object);
         $methodReflection = $reflection->getMethod($method);
-        $methodReflection->setAccessible(true);
 
         return $methodReflection->invokeArgs($object, $arguments);
     }

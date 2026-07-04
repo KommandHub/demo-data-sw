@@ -24,13 +24,17 @@ final class SeedDemoDataCommandTest extends ReflectionTestCase
         $third = $this->createMock(Command::class);
         $third->expects(self::once())->method('run')->willReturn(Command::SUCCESS);
 
+        $fourth = $this->createMock(Command::class);
+        $fourth->expects(self::once())->method('run')->willReturn(Command::SUCCESS);
+
         $application = $this->createMock(Application::class);
-        $application->expects(self::exactly(3))
+        $application->expects(self::exactly(4))
             ->method('find')
             ->willReturnMap([
-                ['kommandhub:add-demo-categories', $first],
-                ['kommandhub:add-property-groups', $second],
-                ['kommandhub:add-demo-products', $third],
+                ['kommandhub:add-main-categories', $first],
+                ['kommandhub:add-footer-categories', $second],
+                ['kommandhub:add-property-groups', $third],
+                ['kommandhub:add-demo-products', $fourth],
             ]);
 
         $command = new SeedDemoDataCommand();
@@ -60,9 +64,9 @@ final class SeedDemoDataCommandTest extends ReflectionTestCase
             ->method('find')
             ->willReturnCallback(static function (string $name) use ($first, $second, $third): Command {
                 return match ($name) {
-                    'kommandhub:add-demo-categories' => $first,
-                    'kommandhub:add-property-groups' => $second,
-                    'kommandhub:add-demo-products' => $third,
+                    'kommandhub:add-main-categories' => $first,
+                    'kommandhub:add-footer-categories' => $second,
+                    'kommandhub:add-property-groups' => $third,
                     default => throw new \InvalidArgumentException($name),
                 };
             });

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Kommandhub\DemoDataSW\Tests\Unit\Command;
 
-use Kommandhub\DemoDataSW\Command\CategoryCommand;
+use Kommandhub\DemoDataSW\Command\MainCategoryCommand;
 use Shopware\Core\Content\Category\CategoryEntity;
 use Kommandhub\DemoDataSW\Service\EntityChoiceSelector;
 use Kommandhub\DemoDataSW\Tests\Unit\Fixture\DemoEntity;
@@ -18,11 +18,11 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 
-final class CategoryCommandTest extends ReflectionTestCase
+final class MainCategoryCommandTest extends ReflectionTestCase
 {
     public function testPrepareCategoriesAssignsCmsPageIdRecursively(): void
     {
-        $command = new CategoryCommand(
+        $command = new MainCategoryCommand(
             $this->createMock(EntityRepository::class),
             $this->createMock(EntityRepository::class),
             new EntityChoiceSelector()
@@ -52,7 +52,7 @@ final class CategoryCommandTest extends ReflectionTestCase
             $this->createSearchResult([])
         );
 
-        $command = new CategoryCommand(
+        $command = new MainCategoryCommand(
             $categoryRepository,
             $this->createMock(EntityRepository::class),
             $this->createMock(EntityChoiceSelector::class)
@@ -76,7 +76,7 @@ final class CategoryCommandTest extends ReflectionTestCase
         $selector = $this->createMock(EntityChoiceSelector::class);
         $selector->method('selectOne')->willReturn(null);
 
-        $command = new CategoryCommand(
+        $command = new MainCategoryCommand(
             $categoryRepository,
             $this->createMock(EntityRepository::class),
             $selector
@@ -104,7 +104,7 @@ final class CategoryCommandTest extends ReflectionTestCase
                 null
             );
 
-        $command = new CategoryCommand(
+        $command = new MainCategoryCommand(
             $categoryRepository,
             $this->createMock(EntityRepository::class),
             $selector
@@ -132,7 +132,12 @@ final class CategoryCommandTest extends ReflectionTestCase
                 $entity = $this->createMock(CategoryEntity::class);
                 $entity->method('getBreadcrumb')->willReturn(['Root']);
                 $entity->method('getName')->willReturn('Root');
-                $callback($entity); // Execute callback for coverage
+
+                self::assertNotNull($callback, 'Callback passed to selectOne should not be null.');
+
+                if (\is_callable($callback)) {
+                    $callback($entity); // Execute callback for coverage
+                }
 
                 static $callCount = 0;
                 $returns = [
@@ -143,7 +148,7 @@ final class CategoryCommandTest extends ReflectionTestCase
                 return $returns[$callCount++] ?? null;
             });
 
-        $command = new CategoryCommand(
+        $command = new MainCategoryCommand(
             $categoryRepository,
             $this->createMock(EntityRepository::class),
             $selector

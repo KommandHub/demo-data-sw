@@ -10,6 +10,7 @@ class KommandhubDemoDataSW extends Plugin
 {
     /**
      * @return bool
+     *
      * @codeCoverageIgnore
      */
     public function executeComposerCommands(): bool

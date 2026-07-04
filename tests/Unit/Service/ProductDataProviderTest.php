@@ -43,7 +43,12 @@ final class ProductDataProviderTest extends ReflectionTestCase
         $selector->method('selectOne')->willReturnCallback(function ($io, $repo, $context, $criteria, $prompt, $callback) use ($selection) {
             $manufacturer = $this->createMock(ProductManufacturerEntity::class);
             $manufacturer->method('getName')->willReturn('Manufacturer');
-            $callback($manufacturer); // Execute callback for coverage
+
+            self::assertNotNull($callback, 'Callback passed to selectOne should not be null.');
+
+            if (\is_callable($callback)) {
+                $callback($manufacturer); // Execute callback for coverage
+            }
 
             return $selection;
         });
