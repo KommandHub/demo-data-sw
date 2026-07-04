@@ -330,7 +330,7 @@ class ProductDataProvider
     {
         try {
             $criteria = new Criteria();
-            $criteria->addFilter(new ContainsFilter('fileName', 'demo-product'));
+            $criteria->addFilter(new ContainsFilter('fileName', 'demo-'));
             $criteria->setLimit(100);
             $result = $this->mediaRepository->search($criteria, $context);
 

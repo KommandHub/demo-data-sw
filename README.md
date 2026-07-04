@@ -53,6 +53,13 @@ To seed the demo data, run the following command inside the container:
 bin/console kommandhub:seed-demo-data
 ```
 
+### Image Selection
+
+When seeding products, you will be prompted to select images from the media manager. To ensure the selection process is manageable even with large media libraries, the plugin only lists images whose filenames start with **`demo-`** (e.g., `demo-product-1.png`). 
+
+> [!IMPORTANT]
+> Ensure your demo images are uploaded to the Shopware Media Manager and prefixed with `demo-` before running the command.
+
 > [!INFO]
 > This command should be run **once** to populate your store with initial demo data. While it uses deterministic UUIDs to avoid duplicates, running it multiple times might overwrite custom changes to the generated entities.
 

@@ -10,7 +10,9 @@ permissions:
 
 jobs:
   quality:
-
+    strategy:
+      matrix:
+        php: ['8.1', '8.2', '8.3', '8.4']
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +22,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: ${{ matrix.php }}
           extensions: mbstring, xml, ctype, iconv, intl, gd, zip
           coverage: none
 
