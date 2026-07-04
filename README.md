@@ -23,6 +23,18 @@ A Shopware 6 plugin for seeding high-quality demo data (categories, property gro
 
 ### Installation
 
+#### Via Composer (Recommended)
+
+Run the following command in your Shopware root directory:
+
+```bash
+composer require kommandhub/demo-data-sw
+bin/console plugin:refresh
+bin/console plugin:install --activate KommandhubDemoDataSW
+```
+
+#### Manual Installation (Development)
+
 1. Clone this repository into your Shopware `custom/plugins/` directory.
 2. Navigate to the plugin directory:
    ```bash

@@ -1,6 +1,6 @@
 {
     "name": "kommandhub/demo-data-sw",
-    "description": "",
+    "description": "Seeding high-quality demo data (categories, property groups, and products) into Shopware 6.",
     "type": "shopware-platform-plugin",
     "version": "1.0.0",
     "license": "MIT",
@@ -36,6 +36,19 @@
             "de-DE": "Shopware Demo Daten",
             "en-GB": "Shopware Demo Data",
             "fr-FR": "Données de démonstration Shopware"
+        },
+        "description": {
+            "de-DE": "Erstellen Sie mühelos hochwertige Demodaten wie Kategorien, Eigenschaftsgruppen und Produkte in Ihrem Shopware 6 Store. Ideal für Tests, Entwicklung und Shop-Präsentationen.",
+            "en-GB": "Effortlessly seed high-quality demo data including categories, property groups, and products into your Shopware 6 store. Perfect for testing, development, and store demonstrations.",
+            "fr-FR": "Importez facilement des données de démonstration de qualité : catégories, groupes de propriétés et produits dans Shopware 6. Idéal pour les tests et le développement de boutiques."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://kommandhub.com",
+            "en-GB": "https://kommandhub.com"
+        },
+        "supportLink": {
+            "de-DE": "https://kommandhub.com/support",
+            "en-GB": "https://kommandhub.com/support"
         }
     },
     "config": {
