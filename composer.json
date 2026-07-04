@@ -2,7 +2,7 @@
     "name": "kommandhub/demo-data-sw",
     "description": "Seeding high-quality demo data (categories, property groups, and products) into Shopware 6.",
     "type": "shopware-platform-plugin",
-    "version": "1.0.0",
+    "version": "1.0.0-alpha",
     "license": "MIT",
     "authors": [
         {
