@@ -1,0 +1,24 @@
+services:
+  shopware-demo-data:
+    image: 'dockware/shopware:6.7.8.0'
+    container_name: shopware-demo-data
+    environment:
+      - 'XDEBUG_ENABLED=1'
+      - 'PHP_VERSION=8.3'
+    volumes:
+      # ----------------------------------------------------------------------------------------------------------------------------------
+      # PLUGINS
+      - "./:/var/www/html/custom/static-plugins/KommandhubDemoDataSW"
+      - "database:/var/lib/mysql"
+      - "./Makefile:/var/www/html/Makefile"
+      # - ".env.test:/var/www/html/.env.test"
+      # ----------------------------------------------------------------------------------------------------------------------------------
+      # EXCLUDE
+      - "/var/www/html/custom/static-plugins/KommandhubDemoDataSW/.git/"
+      - "/var/www/html/custom/static-plugins/KommandhubDemoDataSW/node_modules/"
+      - "/var/www/html/custom/static-plugins/KommandhubDemoDataSW/vendor/"
+      # ----------------------------------------------------------------------------------------------------------------------------------
+
+volumes:
+  database:
+    driver: local
